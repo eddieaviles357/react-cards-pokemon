@@ -6,4 +6,4 @@ const useFlip = () => {
     return [isFlipped, flip];
 }
 
-export default useFlip;
+export {useFlip};
