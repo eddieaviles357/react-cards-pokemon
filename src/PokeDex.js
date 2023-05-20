@@ -10,12 +10,14 @@ import "./PokeDex.css";
  * or from a dropdown of available pokemon. */
 function PokeDex() {
   const [pokemon, setPokemon] = useState([]);
+
   const addPokemon = async name => {
     const response = await axios.get(
       `https://pokeapi.co/api/v2/pokemon/${name}/`
     );
     setPokemon(pokemon => [...pokemon, { ...response.data, id: uuidv4() }]);
   };
+  
   return (
     <div className="PokeDex">
       <div className="PokeDex-buttons">
