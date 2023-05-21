@@ -8,12 +8,13 @@ const useFlip = () => {
     return [isFlipped, flip];
 }
 
-const useAxios = (url) => {
-    if(!url) throw new Error('Please Enter a URL');
-    
+const useAxios = (baseURL) => {
+    if(!baseURL) throw new Error('Please Enter a URL');
+
     const [axiosData, setAxiosData] = useState([]);
 
-    const setData = async() => {
+    const setData = async(path = '') => {
+        const url = `${baseURL}${path}`;
         try {
             const {data} = await axios.get(url);
             setAxiosData( axiosData => [...axiosData, { ...data, id: uuidv4() }] );
@@ -22,6 +23,7 @@ const useAxios = (url) => {
             return new Error(err.message);
         }
     }
+    
     return [axiosData, setData];
 }
 export {useFlip, useAxios};
