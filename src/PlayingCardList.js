@@ -9,7 +9,7 @@ const URL = "https://deckofcardsapi.com/api/deck/new/draw/";
 
 function CardTable() {
   const [cards, setCards] = useAxios(URL);
-  
+
   return (
     <div className="PlayingCardList">
       <h3>Pick a card, any card!</h3>
